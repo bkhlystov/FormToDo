@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="./style/bootstrap.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="./style/slider.css">
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/docs.min.js"></script>
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="./js/jssor.slider.mini.js"></script>
+    <script type="text/javascript" src="./js/config_slider.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <link rel="stylesheet" href="./style/phone.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+    <script src="./js/controller.js"></script>
+</head>
+<body ng-controller='mainCtrl'>
+<!-- NAVBAR ================================================== -->
+<div class="container">
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0px;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.jssor.com/index.html">Bootstrap Slider</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tutorial</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- Jssor Slider Begin -->
+<div class="container">
+    <div id="slider1_container"
+         style="visibility: hidden; position: relative; margin: 0 auto; width: 1140px; height: 442px; overflow: hidden;">
+        <!-- Loading Screen -->
+        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+
+                background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;">
+            </div>
+            <div style="position: absolute; display: block; background: url(./img/loading.gif) no-repeat center center;
+
+                top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+        </div>
+        <!-- Slides Container -->
+        <div u="slides" style="position: absolute; left: 0px; top: 0px; width: 1140px; height: 442px;
+            overflow: hidden;">
+            <div><img u="image" src2="./img/home/01.jpg"/></div>
+            <div><img u="image" src2="./img/home/02.jpg"/></div>
+            <div><img u="image" src2="./img/home/03.jpg"/></div>
+            <div><img u="image" src2="./img/home/04.jpg"/></div>
+        </div>
+        <div u="navigator" class="jssorb05" style="bottom: 16px; right: 6px;">
+            <!-- bullet navigator item prototype -->
+            <div u="prototype"></div>
+        </div>
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora11l" style="top: 123px; left: 8px;">
+            </span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora11r" style="top: 123px; right: 8px;">
+            </span>
+        <!--#endregion Arrow Navigator Skin End -->
+        <a style="display: none" href="http://www.jssor.com">Bootstrap Carousel</a>
+    </div>
+    <!-- Jssor Slider End -->
+</div>
+
+<!--Angular_list phone-->
+<div class="container phone">
+    <!--форма сохранения даных клиента-->
+    <form name="answerForm">
+        <fieldset>
+            <p><label for="answerText">Имя</label>
+                <input id="answerText" ng-model="answer.name" required placeholder="Введите Имя" type="text"/></p>
+            <p><label for="answerAuthor">Логин</label>
+                <input id="answerAuthor" ng-model="answer.login" required placeholder="Введите Логин" type="text"/></p>
+            <p><label for="answerPathword">Пароль</label>
+                <input id="answerPathword" ng-model="answer.password" required placeholder="Введите Пароль" type="password"/></p>
+        </fieldset>
+        <p><button type="submit" ng-click="save(answer, answerForm)">Сохранить</button></p>
+    </form>
+    <!--основной блок phonecat-->
+    <h1 ng-click="fpage = !fpage; spage = !spage">{{title}}</h1>
+    <input type="text" name="phoneName" ng-model="sortField">
+    <table ng-show="fpage">
+        <thead>
+        <tr>
+            <th><h2>Searching tablet</h2></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="phone in phones | filter:sortField" class="list_phone" ng-click="templete(this);">
+            <td>
+                <p>{{phone.id}}</p><br>
+                <p>{{phone.name}}</p><br>
+                <p>{{phone.snippet}}</p><br>
+                <a href="#"><img src="{{phone.imageUrl}}" alt=""></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

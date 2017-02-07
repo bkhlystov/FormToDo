@@ -1,0 +1,12 @@
+.list_phone{
+    width: 100px;
+    height: auto;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.list_phone td>a>img{
+    vertical-align: none;
+    display: block;
+    position: relative;
+    margin: 0px auto;
+}
